@@ -46777,6 +46777,7 @@ var Update = __webpack_require__(74);
                     return _this2.error.response.data.errors;
                 });
             }
+            console.log(key + ' ' + id);
         },
         openAdd: function openAdd() {
             this.addActive = "is-active";
@@ -46884,6 +46885,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['openmodal'],
@@ -46903,7 +46906,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             axios.post('/phonebook', this.$data.list).then(function (response) {
-                return _this.close();
+                _this.close();
+                // this.$parent.lists.push(this.$data.list) // Add后免刷新直接出现
+                _this.$parent.lists.push(response.data); // 直接出现
             }).catch(function (error) {
                 return _this.errors = error.response.data.errors;
             });

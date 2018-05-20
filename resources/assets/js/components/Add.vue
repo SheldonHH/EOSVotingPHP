@@ -16,12 +16,14 @@
                     <small v-if="errors.name" class="has-text-danger">{{errors.name[0]}}</small>
                     <label class="label">Phone</label>
                     <div class="control">
-                        <input class="input" :class="{'is-danger':errors.phone}" type="number" placeholder="phone" v-model="list.phone">
+                        <input class="input" :class="{'is-danger':errors.phone}" type="number" placeholder="phone"
+                               v-model="list.phone">
                     </div>
                     <small v-if="errors.phone" class="has-text-danger">{{errors.phone[0]}}</small>
                     <label class="label">Email</label>
                     <div class="control">
-                        <input class="input" :class="{'is-danger':errors.email}"  type="email" placeholder="Name" v-model="list.email">
+                        <input class="input" :class="{'is-danger':errors.email}" type="email" placeholder="Name"
+                               v-model="list.email">
                     </div>
                     <small v-if="errors.email" class="has-text-danger">{{errors.email[0]}}</small>
                 </div>
@@ -49,8 +51,13 @@
         },
         methods: {
             save() {
-                axios.post('/phonebook', this.$data.list).then((response) => this.close())
+                axios.post('/phonebook', this.$data.list).then((response) => {
+                    this.close()
+                    // this.$parent.lists.push(this.$data.list) // Add后免刷新直接出现
+                    this.$parent.lists.push(response.data) // 直接出现
+                })
                     .catch((error) => this.errors = error.response.data.errors)
+
             },
             close() {
                 this.$emit('closeRequest')

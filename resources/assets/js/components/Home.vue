@@ -76,6 +76,7 @@
                         .then((response)=>this.lists.splice(key, 1))
                         .catch((error) => this.error.response.data.errors)
                 }
+                console.log(`${key} ${id}`)
             },
             openAdd() {
                 this.addActive = "is-active"
