@@ -46758,6 +46758,7 @@ var Update = __webpack_require__(74);
         };
     },
 
+    // Search for name only
     // watch:{
     //         searchQuery(){
     //             // console.log(this.searchQuery)

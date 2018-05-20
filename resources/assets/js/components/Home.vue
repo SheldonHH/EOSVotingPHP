@@ -66,6 +66,7 @@
                 temp: {}
             }
         },
+        // Search for name only
         // watch:{
         //         searchQuery(){
         //             // console.log(this.searchQuery)
