@@ -46909,6 +46909,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.close();
                 // this.$parent.lists.push(this.$data.list) // Add后免刷新直接出现
                 _this.$parent.lists.push(response.data); // 直接出现
+                _this.$parent.lists.sort(function (a, b) {
+                    return a.name > b.name ? -1 : 1;
+                });
             }).catch(function (error) {
                 return _this.errors = error.response.data.errors;
             });

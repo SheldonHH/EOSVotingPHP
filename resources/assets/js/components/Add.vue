@@ -55,6 +55,9 @@
                     this.close()
                     // this.$parent.lists.push(this.$data.list) // Add后免刷新直接出现
                     this.$parent.lists.push(response.data) // 直接出现
+                    this.$parent.lists.sort(function (a, b) {
+                        return (a.name > b.name)? -1 : 1;
+                    })
                 })
                     .catch((error) => this.errors = error.response.data.errors)
 
