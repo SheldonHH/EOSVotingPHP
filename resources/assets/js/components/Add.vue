@@ -58,6 +58,7 @@
                     this.$parent.lists.sort(function (a, b) {
                         return (a.name > b.name)? -1 : 1;
                     })
+                    this.list = ""
                 })
                     .catch((error) => this.errors = error.response.data.errors)
 

@@ -46752,29 +46752,65 @@ var Update = __webpack_require__(74);
             showActive: '',
             updateActive: '',
             lists: {},
-            errors: {}
+            errors: {},
+            searchQuery: '',
+            temp: {}
         };
     },
+
+    // watch:{
+    //         searchQuery(){
+    //             // console.log(this.searchQuery)
+    //             if(this.searchQuery.length>0){
+    //                 let result = this.lists.filter((item)=>{
+    //                         // console.log(index)
+    //                     return item.name.toLowerCase().indexOf(this.searchQuery.toLowerCase())>-1
+    //                 })
+    //                 console.log(result)
+    //                 this.temp = result
+    //                 // this.lists = result // 不能让直接让lists等于 result
+    //             }else{ // if no result, then show all result
+    //                 this.temp = this.lists
+    //             }
+    //         }
+    // },
+    watch: {
+        searchQuery: function searchQuery() {
+            var _this = this;
+
+            // console.log(this.searchQuery)
+            if (this.searchQuery.length > 0) {
+                this.temp = this.lists.filter(function (item) {
+                    // console.log(Object.keys(item))
+                    return Object.keys(item).some(function (key) {
+                        var string = String(item[key]);
+                        // console.log(key)
+                        return string.toLowerCase().indexOf(_this.searchQuery.toLowerCase()) > -1;
+                    });
+                });
+            }
+        }
+    },
     mounted: function mounted() {
-        var _this = this;
+        var _this2 = this;
 
         console.log('mounted working');
         axios.post('/getData', this.$data.list).then(function (response) {
-            return _this.lists = response.data;
+            return _this2.temp = _this2.lists = response.data;
         }).catch(function (error) {
-            return _this.errors = error.response.data.errors;
+            return _this2.errors = error.response.data.errors;
         });
     },
 
     methods: {
         del: function del(key, id) {
-            var _this2 = this;
+            var _this3 = this;
 
             if (confirm("Are you sure?")) {
                 axios.delete('/phonebook/' + id).then(function (response) {
-                    return _this2.lists.splice(key, 1);
+                    return _this3.lists.splice(key, 1);
                 }).catch(function (error) {
-                    return _this2.error.response.data.errors;
+                    return _this3.error.response.data.errors;
                 });
             }
             console.log(key + ' ' + id);
@@ -46783,11 +46819,11 @@ var Update = __webpack_require__(74);
             this.addActive = "is-active";
         },
         openShow: function openShow(key) {
-            this.$children[1].list = this.lists[key];
+            this.$children[1].list = this.temp[key];
             this.showActive = "is-active";
         },
         openUpdate: function openUpdate(key) {
-            this.$children[2].list = this.lists[key];
+            this.$children[2].list = this.temp[key];
             this.updateActive = "is-active";
         },
         close: function close() {
@@ -46912,6 +46948,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.$parent.lists.sort(function (a, b) {
                     return a.name > b.name ? -1 : 1;
                 });
+                _this.list = "";
             }).catch(function (error) {
                 return _this.errors = error.response.data.errors;
             });
@@ -47098,9 +47135,35 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _vm._m(0),
+          _c("div", { staticClass: "panel-block" }, [
+            _c("p", { staticClass: "control has-icons-left" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.searchQuery,
+                    expression: "searchQuery"
+                  }
+                ],
+                staticClass: "input is-small",
+                attrs: { type: "text", placeholder: "search" },
+                domProps: { value: _vm.searchQuery },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.searchQuery = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm._m(0)
+            ])
+          ]),
           _vm._v(" "),
-          _vm._l(_vm.lists, function(item, key) {
+          _vm._l(_vm.temp, function(item, key) {
             return _c("a", { staticClass: "panel-block is-active" }, [
               _c("span", { staticClass: "column is-9" }, [
                 _vm._v("\n        " + _vm._s(item.name) + "\n    ")
@@ -47174,20 +47237,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "panel-block" }, [
-      _c("p", { staticClass: "control has-icons-left" }, [
-        _c("input", {
-          staticClass: "input is-small",
-          attrs: { type: "text", placeholder: "search" }
-        }),
-        _vm._v(" "),
-        _c("span", { staticClass: "icon is-small is-left" }, [
-          _c("i", {
-            staticClass: "fas fa-search",
-            attrs: { "aria-hidden": "true" }
-          })
-        ])
-      ])
+    return _c("span", { staticClass: "icon is-small is-left" }, [
+      _c("i", {
+        staticClass: "fas fa-search",
+        attrs: { "aria-hidden": "true" }
+      })
     ])
   },
   function() {
