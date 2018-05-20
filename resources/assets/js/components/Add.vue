@@ -21,7 +21,7 @@
                     <small v-if="errors.phone" class="has-text-danger">{{errors.phone[0]}}</small>
                     <label class="label">Email</label>
                     <div class="control">
-                        <input class="inputgit" :class="{'is-danger':errors.email}"  type="email" placeholder="Name" v-model="list.email">
+                        <input class="input" :class="{'is-danger':errors.email}"  type="email" placeholder="Name" v-model="list.email">
                     </div>
                     <small v-if="errors.email" class="has-text-danger">{{errors.email[0]}}</small>
                 </div>
