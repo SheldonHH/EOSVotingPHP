@@ -3,31 +3,37 @@
         <div class="modal-background"></div>
         <div class="modal-card">
             <header class="modal-card-head">
-                <p class="modal-card-title">Add New Entry</p>
+                <p class="modal-card-title">Modal title</p>
                 <button class="delete" aria-label="close" @click='close'></button>
             </header>
             <section class="modal-card-body">
                 <div class="field">
                     <label class="label">Name</label>
                     <div class="control">
-                        <input class="input" :class="{'is-danger':errors.name}" type="text" placeholder="Name"
-                               v-model="list.name">
+                        <!--<input class="input" type="text" placeholder="Name"-->
+                        <!--v-model="list.name">-->
+                        <li class="panel-block">
+                            <label class="column is-2">Name</label>
+                            {{list.name}}
+                        </li>
                     </div>
-                    <small v-if="errors.name" class="has-text-danger">{{errors.name[0]}}</small>
-                    <label class="label">Phone</label>
                     <div class="control">
-                        <input class="input" :class="{'is-danger':errors.phone}" type="number" placeholder="phone" v-model="list.phone">
+                        <li class="panel-block">
+                            <label class="column is-2">Phone</label>
+                            {{list.phone}}
+                        </li>
                     </div>
-                    <small v-if="errors.phone" class="has-text-danger">{{errors.phone[0]}}</small>
-                    <label class="label">Email</label>
                     <div class="control">
-                        <input class="inputgit" :class="{'is-danger':errors.email}"  type="email" placeholder="Name" v-model="list.email">
+                        <li class="panel-block">
+                            <label class="column is-2">Email</label>
+                            {{list.email}}
+                        </li>
                     </div>
-                    <small v-if="errors.email" class="has-text-danger">{{errors.email[0]}}</small>
+
                 </div>
             </section>
             <footer class="modal-card-foot">
-                <button class="button is-success" @click='save'>Save</button>
+                <button class="button is-success" @click='save'>Save changes</button>
                 <button class="button" @click='close'>Cancel</button>
             </footer>
         </div>
