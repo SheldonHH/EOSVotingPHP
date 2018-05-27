@@ -6,12 +6,14 @@
  */
 
 require('./bootstrap');
-
+require('vuetify/dist/vuetify.min.css')
 window.Vue = require('vue');
 
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import vuetify from 'vuetify'
 Vue.use(VueRouter)
+Vue.use(vuetify)
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -19,7 +21,8 @@ Vue.use(VueRouter)
  */
 
 let Myheader = require('./components/Myheader.vue')
-let Myfooter = require('./components/Myfooter.vue')
+let Myfooter = require('./components/pp.vue')
+let Maipn = require('./components/Main.vue')
 let Home = require('./components/Home.vue')
 let About = require('./components/About.vue')
 // let Add = require('./components/Add.vue') // 放入app.js
@@ -38,7 +41,7 @@ const router = new VueRouter({
 const app = new Vue({
     el: '#app',
     router,
-    components: {Myheader, Myfooter},
+    components: {Myheader, Myfooter, Maipn},
     create(){
         console.log('Hello World')
     }
