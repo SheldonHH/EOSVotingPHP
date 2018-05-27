@@ -19,19 +19,29 @@ Vue.use(vuetify)
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
-let Stakes = require('./components/Stakes.vue')
 let Myheader = require('./components/Myheader.vue')
 let Myfooter = require('./components/Myfooter.vue')
 let Maipn = require('./components/Main.vue')
 let Home = require('./components/Home.vue')
 let About = require('./components/About.vue')
+
+let Stakes = require('./components/Stakes.vue')
+let Account = require('./components/Account.vue')
+let CreateAccount = require('./components/CreateAccount.vue')
+let Join = require('./components/Join.vue')
+let Vote = require('./components/Vote.vue')
+let Settings = require('./components/Settings.vue')
 // let Add = require('./components/Add.vue') // 放入app.js
 
 const routes = [
     {path: '/home', component: Home},
     {path: '/about', component: About},
-    {path: '/stakes', component: Stakes}
+    {path: '/account', component: Account},
+    {path: '/stakes', component: Stakes},
+    {path: '/createaccount', component: CreateAccount},
+    {path: '/settings', component: Settings},
+    {path: '/join', component: Join},
+    {path: '/vote', component: Vote}
 ]
 
 const router = new VueRouter({

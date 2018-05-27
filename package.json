@@ -21,7 +21,11 @@
     },
     "dependencies": {
         "bulma": "^0.7.1",
+        "eosjs": "^13.0.0",
+        "eosjs-ecc": "^4.0.1",
+        "file-saver": "^1.3.8",
         "font-awesome": "^4.7.0",
+        "jszip": "^3.1.5",
         "node-sass": "^4.9.0",
         "vue-router": "^3.0.1",
         "vuetify": "^1.0.18",
