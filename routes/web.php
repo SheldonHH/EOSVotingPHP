@@ -20,6 +20,11 @@ Route::get('/phonebook/{name}', function(){
     return redirect('/');
 })->where('name', '[A-Za-z]+');
 
+Route::get('/eosvoting/{name}', function(){
+  return redirect('/');
+})->where('name', '[A-Za-z]+');
 
 Route::resource('phonebook', 'PhonebookController');
 Route::post('getData', 'PhonebookController@getData');
+
+Route::resource('eosvoting', 'EOSVotingController');
