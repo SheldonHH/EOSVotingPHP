@@ -11,16 +11,19 @@
 <body>
     <div id="app">
       <v-app id="inspire">
-        <Myheader>
-        </Myheader>
-        <div class="container">
-            <router-view></router-view>
-            {{--<Add></Add>--}}
-        </div>
+        <v-app dark class="black">
+          <Myheader>
+          </Myheader>
+          <router-view></router-view>
+          {{--<Add></Add>--}}
+
+        <!-- <div class="container"> -->
+
+        <!-- </div> -->
         <Myfooter>
         </Myfooter>
-        <Maipn>
-        </Maipn>
+        <!-- <Maipn>
+        </Maipn> -->
       </v-app>
     </div>
     <script src="{{asset('js/app.js')}}"></script>

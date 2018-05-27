@@ -20,8 +20,9 @@ Vue.use(vuetify)
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+let Stakes = require('./components/Stakes.vue')
 let Myheader = require('./components/Myheader.vue')
-let Myfooter = require('./components/pp.vue')
+let Myfooter = require('./components/Myfooter.vue')
 let Maipn = require('./components/Main.vue')
 let Home = require('./components/Home.vue')
 let About = require('./components/About.vue')
@@ -29,7 +30,8 @@ let About = require('./components/About.vue')
 
 const routes = [
     {path: '/home', component: Home},
-    {path: '/about', component: About}
+    {path: '/about', component: About},
+    {path: '/stakes', component: Stakes}
 ]
 
 const router = new VueRouter({
@@ -41,7 +43,7 @@ const router = new VueRouter({
 const app = new Vue({
     el: '#app',
     router,
-    components: {Myheader, Myfooter, Maipn},
+    components: {Myheader, Myfooter, Maipn, Stakes},
     create(){
         console.log('Hello World')
     }

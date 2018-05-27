@@ -12078,14 +12078,15 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuet
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+var Stakes = __webpack_require__(81);
 var Myheader = __webpack_require__(40);
-var Myfooter = __webpack_require__(48);
+var Myfooter = __webpack_require__(86);
 var Maipn = __webpack_require__(50);
 var Home = __webpack_require__(54);
 var About = __webpack_require__(66);
 // let Add = require('./components/Add.vue') // 放入app.js
 
-var routes = [{ path: '/home', component: Home }, { path: '/about', component: About }];
+var routes = [{ path: '/home', component: Home }, { path: '/about', component: About }, { path: '/stakes', component: Stakes }];
 
 var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
     // mode: 'history',
@@ -12095,7 +12096,7 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
 var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     el: '#app',
     router: router,
-    components: { Myheader: Myheader, Myfooter: Myfooter, Maipn: Maipn },
+    components: { Myheader: Myheader, Myfooter: Myfooter, Maipn: Maipn, Stakes: Stakes },
     create: function create() {
         console.log('Hello World');
     }
@@ -46070,7 +46071,7 @@ exports = module.exports = __webpack_require__(43)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -46452,6 +46453,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
@@ -46463,65 +46486,63 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "nav",
-    {
-      staticClass: "navbar",
-      attrs: { role: "navigation", "aria-label": "main navigation" }
-    },
-    [
-      _c("div", { staticClass: "navbar-brand" }, [
-        _c("a", { staticClass: "navbar-item", attrs: { href: "" } }),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "navbar-menu.isactive" },
-          [
-            _c(
-              "router-link",
-              { staticClass: "navbar-item", attrs: { to: "/home" } },
-              [_vm._v("Home")]
-            ),
-            _vm._v(" "),
-            _c(
-              "router-link",
-              { staticClass: "navbar-item", attrs: { to: "/about" } },
-              [_vm._v("About")]
-            )
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _vm._m(0)
-      ])
-    ]
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "navbar-burger",
-        attrs: {
-          role: "button",
-          "aria-label": "menu",
-          "aria-expanded": "false"
-        }
-      },
+  return _c("v-toolbar", [
+    _c(
+      "p",
+      { staticClass: "level-item has-text-centered" },
+      [_c("v-btn", { attrs: { flat: "", to: "/home" } }, [_vm._v("Home")])],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "p",
+      { staticClass: "level-item has-text-centered" },
       [
-        _c("span", { attrs: { "aria-hidden": "true" } }),
-        _vm._v(" "),
-        _c("span", { attrs: { "aria-hidden": "true" } }),
-        _vm._v(" "),
-        _c("span", { attrs: { "aria-hidden": "true" } })
-      ]
+        _c("v-btn", { attrs: { flat: "", to: "/account" } }, [
+          _vm._v("Import Account")
+        ])
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "p",
+      { staticClass: "level-item has-text-centered" },
+      [
+        _c("v-btn", { attrs: { flat: "", to: "/createaccount" } }, [
+          _vm._v("Create Account")
+        ])
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "p",
+      { staticClass: "level-item has-text-centered" },
+      [_c("v-btn", { attrs: { flat: "", to: "/vote" } }, [_vm._v("Voting")])],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "p",
+      { staticClass: "level-item has-text-centered" },
+      [_c("v-btn", { attrs: { flat: "", to: "/stakes" } }, [_vm._v("Stakes")])],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "p",
+      { staticClass: "level-item has-text-centered" },
+      [
+        _c("v-btn", { attrs: { flat: "", to: "/settings" } }, [
+          _vm._v("Settings")
+        ])
+      ],
+      1
     )
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -46532,113 +46553,8 @@ if (false) {
 }
 
 /***/ }),
-/* 48 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = null
-/* template */
-var __vue_template__ = __webpack_require__(49)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/pp.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-bed48352", Component.options)
-  } else {
-    hotAPI.reload("data-v-bed48352", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 49 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("footer", { staticClass: "footer" }, [
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "content has-text-centered" }, [
-          _c("p", [
-            _c("strong", [_vm._v("Vuejs Phonebook App")]),
-            _vm._v(" by "),
-            _c("a", { attrs: { href: "https://jgthms.com" } }, [
-              _vm._v("Sheldon")
-            ]),
-            _vm._v(". The source code is licensed\n                "),
-            _c(
-              "a",
-              {
-                attrs: {
-                  href: "http://opensource.org/licenses/mit-license.php"
-                }
-              },
-              [_vm._v("MIT")]
-            ),
-            _vm._v(". The website content\n                is licensed "),
-            _c(
-              "a",
-              {
-                attrs: {
-                  href: "http://creativecommons.org/licenses/by-nc-sa/4.0/"
-                }
-              },
-              [_vm._v("CC BY NC SA 4.0")]
-            ),
-            _vm._v(".\n            ")
-          ])
-        ])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-bed48352", module.exports)
-  }
-}
-
-/***/ }),
+/* 48 */,
+/* 49 */,
 /* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -67374,6 +67290,732 @@ exports.push([module.i, "/*!\n* Vuetify v1.0.18\n* Forged by John Leider\n* Rele
 
 // exports
 
+
+/***/ }),
+/* 81 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(82)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(84)
+/* template */
+var __vue_template__ = __webpack_require__(85)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-82d306a0"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/Stakes.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-82d306a0", Component.options)
+  } else {
+    hotAPI.reload("data-v-82d306a0", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 82 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(83);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(44)("42203b80", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-82d306a0\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Stakes.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-82d306a0\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Stakes.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 83 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(43)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.headline[data-v-82d306a0] {\n  color: #7f8fa4;\n}\n.btn[data-v-82d306a0] {\n  -webkit-box-sizing: content-box;\n          box-sizing: content-box;\n\n  background-color: #cfa367!important;\n}\n.changebtn[data-v-82d306a0] {\n  text-transform: none;\n}\n.progress-circular[data-v-82d306a0] {\n  color: #cfa367!important;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 84 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'stakes',
+
+  methods: {
+    change: function change() {
+      // Stakes
+
+      // After modifying the request result
+      // this.activeNumber = 0
+      // this.stakesNumber = 0
+      // this.refundingNumber = 0
+    }
+  },
+
+  created: function created() {
+    // Initialization
+    this.activeNumber = 0;
+    this.stakesNumber = 0;
+    this.refundingNumber = 0;
+    this.totalNumber = 100;
+  },
+  data: function data() {
+    return {
+      activeNumber: 0,
+      stakesNumber: 0,
+      refundingNumber: 0,
+      totalNumber: 100
+    };
+  }
+});
+
+/***/ }),
+/* 85 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-container",
+    { attrs: { "grid-list-xl": "", "text-xs-left": "" } },
+    [
+      _c(
+        "v-layout",
+        { attrs: { row: "", wrap: "" } },
+        [
+          _c(
+            "v-flex",
+            { attrs: { "d-flex": "", xs3: "" } },
+            [
+              _c(
+                "v-card",
+                { attrs: { color: "blue-grey darken-4", dark: "" } },
+                [
+                  _c(
+                    "v-container",
+                    { staticClass: "px-4 py-4" },
+                    [
+                      _c(
+                        "v-flex",
+                        {
+                          staticClass: "white--text display-1 my-0 px-0",
+                          attrs: { tag: "h1" }
+                        },
+                        [_vm._v("Stakes")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-flex",
+                        { staticClass: "caption px-0", attrs: { "xs-12": "" } },
+                        [
+                          _vm._v(
+                            "Set your stake for both CPU and Network bandwidth before voting."
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-flex",
+            { attrs: { xs9: "" } },
+            [
+              _c(
+                "v-flex",
+                { attrs: { xs12: "", "px-0": "" } },
+                [
+                  _c(
+                    "v-card",
+                    { attrs: { color: "blue-grey darken-4", dark: "" } },
+                    [
+                      _c(
+                        "v-flex",
+                        {
+                          staticClass: "headline",
+                          staticStyle: { "background-color": "#000" },
+                          attrs: { tag: "h1", "my-0": "" }
+                        },
+                        [_vm._v("Overview")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-container",
+                        { staticClass: "px-4 py-4" },
+                        [
+                          _c(
+                            "v-layout",
+                            {
+                              attrs: {
+                                row: "",
+                                wrap: "",
+                                "justify-space-between": ""
+                              }
+                            },
+                            [
+                              _c("v-flex", { attrs: { xs6: "" } }, [
+                                _c("p", { staticClass: "display-1 mb-0" }, [
+                                  _vm._v(_vm._s(_vm.activeNumber) + " Stakes")
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "p",
+                                  {
+                                    staticClass:
+                                      "display-1 mb-0 blue-grey--text"
+                                  },
+                                  [
+                                    _vm._v(
+                                      _vm._s(_vm.refundingNumber) + " Refunding"
+                                    )
+                                  ]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "v-flex",
+                                { attrs: { xs6: "", "text-xs-right": "" } },
+                                [
+                                  _c("p", { staticClass: "display-1 mb-0" }, [
+                                    _vm._v("100")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "p",
+                                    {
+                                      staticClass:
+                                        "display-1 mb-0 blue-grey--text"
+                                    },
+                                    [_vm._v("Total SYS")]
+                                  )
+                                ]
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-layout",
+                { attrs: { row: "", wrap: "" } },
+                [
+                  _c(
+                    "v-flex",
+                    { attrs: { "d-flex": "", xs6: "" } },
+                    [
+                      _c(
+                        "v-card",
+                        { attrs: { color: "blue-grey darken-4", dark: "" } },
+                        [
+                          _c(
+                            "v-flex",
+                            {
+                              staticClass: "headline",
+                              staticStyle: { "background-color": "#000" },
+                              attrs: { tag: "h1", "my-0": "" }
+                            },
+                            [_vm._v("Active")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-container",
+                            { attrs: { "text-xs-center": "", "pt-5": "" } },
+                            [
+                              _c(
+                                "v-progress-circular",
+                                {
+                                  staticClass: "mt-5 progress-circular",
+                                  attrs: {
+                                    size: 200,
+                                    width: 15,
+                                    rotate: -90,
+                                    value:
+                                      (1 - _vm.activeNumber / _vm.totalNumber) *
+                                      100,
+                                    color: "red"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                " +
+                                      _vm._s(
+                                        Math.round(
+                                          (1 -
+                                            _vm.activeNumber /
+                                              _vm.totalNumber) *
+                                            100
+                                        )
+                                      ) +
+                                      " %\n              "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-flex",
+                                {
+                                  staticClass: "caption px-0 pt-0",
+                                  attrs: { "xs-12": "", "mt-5": "" }
+                                },
+                                [
+                                  _vm._v(
+                                    "Set your stake for both CPU and Network bandwidth before voting."
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-flex",
+                                {
+                                  staticClass: "display-1 white--text",
+                                  attrs: { tag: "h1", "my-0": "" }
+                                },
+                                [
+                                  _vm._v(
+                                    _vm._s(_vm.totalNumber - _vm.activeNumber) +
+                                      " SYS"
+                                  )
+                                ]
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-flex",
+                    { attrs: { xs6: "" } },
+                    [
+                      _c(
+                        "v-layout",
+                        { attrs: { column: "" } },
+                        [
+                          _c(
+                            "v-flex",
+                            {
+                              staticClass: "headline",
+                              attrs: { tag: "h1", "my-0": "" }
+                            },
+                            [_vm._v("Stakes")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-card",
+                            {
+                              attrs: { color: "blue-grey darken-4", dark: "" }
+                            },
+                            [
+                              _c(
+                                "v-container",
+                                { attrs: { "text-xs-center": "" } },
+                                [
+                                  _c(
+                                    "v-flex",
+                                    {
+                                      staticClass: "display-1 white--text",
+                                      attrs: { tag: "h1", "my-0": "" }
+                                    },
+                                    [_vm._v(_vm._s(_vm.stakesNumber) + " SYS")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("v-slider", {
+                                    attrs: {
+                                      step: "1",
+                                      min: "0",
+                                      max: _vm.totalNumber
+                                    },
+                                    model: {
+                                      value: _vm.stakesNumber,
+                                      callback: function($$v) {
+                                        _vm.stakesNumber = $$v
+                                      },
+                                      expression: "stakesNumber"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-flex",
+                                    {
+                                      staticClass: "caption px-0 pt-0",
+                                      attrs: { "xs-12": "" }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "Set your stake for both CPU and Network bandwidth before voting."
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-btn",
+                                    {
+                                      staticClass: "btn changebtn",
+                                      attrs: {
+                                        dark: "",
+                                        "mx-0": "",
+                                        "my-0": ""
+                                      },
+                                      on: { click: _vm.change }
+                                    },
+                                    [_vm._v("Change")]
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-layout",
+                        { attrs: { column: "" } },
+                        [
+                          _c(
+                            "v-flex",
+                            {
+                              staticClass: "headline",
+                              attrs: { tag: "h1", "my-0": "" }
+                            },
+                            [_vm._v("Refunding")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-card",
+                            {
+                              attrs: { color: "blue-grey darken-4", dark: "" }
+                            },
+                            [
+                              _c(
+                                "v-container",
+                                { attrs: { "text-xs-center": "" } },
+                                [
+                                  _c(
+                                    "v-flex",
+                                    {
+                                      staticClass: "display-1 white--text",
+                                      attrs: { tag: "h1", "my-0": "" }
+                                    },
+                                    [
+                                      _vm._v(
+                                        _vm._s(_vm.refundingNumber) + " SYS"
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("v-progress-linear", {
+                                    attrs: {
+                                      value:
+                                        _vm.refundingNumber /
+                                        _vm.totalNumber *
+                                        100,
+                                      height: "5",
+                                      color: "info"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-flex",
+                                    {
+                                      staticClass: "caption px-0",
+                                      attrs: { "xs-12": "" }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "You will be refunded after 72 hours each time your stakes are reduced."
+                                      )
+                                    ]
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-82d306a0", module.exports)
+  }
+}
+
+/***/ }),
+/* 86 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = null
+/* template */
+var __vue_template__ = __webpack_require__(87)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/Myfooter.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-36266004", Component.options)
+  } else {
+    hotAPI.reload("data-v-36266004", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 87 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("footer", { staticClass: "footer" }, [
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "content has-text-centered" }, [
+          _c("p", [
+            _c("strong", [_vm._v("Vuejs Phonebook App")]),
+            _vm._v(" by "),
+            _c("a", { attrs: { href: "https://jgthms.com" } }, [
+              _vm._v("Sheldon")
+            ]),
+            _vm._v(". The source code is licensed\n                "),
+            _c(
+              "a",
+              {
+                attrs: {
+                  href: "http://opensource.org/licenses/mit-license.php"
+                }
+              },
+              [_vm._v("MIT")]
+            ),
+            _vm._v(". The website content\n                is licensed "),
+            _c(
+              "a",
+              {
+                attrs: {
+                  href: "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+                }
+              },
+              [_vm._v("CC BY NC SA 4.0")]
+            ),
+            _vm._v(".\n            ")
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-36266004", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
