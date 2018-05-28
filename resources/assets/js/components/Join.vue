@@ -117,7 +117,7 @@
               <label class="has-text-white" style="padding-right: 450px">Public Key</label>
               <div class="control has-icons-left has-icons-right">
                 <input :class="!correctPublicKey && publicKey!=='' ? 'input is-danger' : 'input is-success'"
-                       v-model="publicKey">
+              v-model="publicKey">
                 <span class="icon is-small is-left">
       <i class="fas fa-envelope"></i>
     </span>

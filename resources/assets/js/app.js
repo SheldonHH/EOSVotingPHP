@@ -10,6 +10,7 @@ require('vuetify/dist/vuetify.min.css')
 window.Vue = require('vue');
 
 import Vue from 'vue'
+import store from './store'
 import VueRouter from 'vue-router'
 import vuetify from 'vuetify'
 Vue.use(VueRouter)
@@ -52,7 +53,7 @@ const router = new VueRouter({
 
 const app = new Vue({
     el: '#app',
-    router,
+    router,  store,
     components: {Myheader, Myfooter, Maipn, Stakes},
     create(){
         console.log('Hello World')
