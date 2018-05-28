@@ -29,7 +29,7 @@
                 <div class="field">
                   <label class="has-text-white has-text-left">Nick Name</label>
                   <div class="control">
-                    <input class="input" v-model="list.nickname">
+                    <input class="input" v-model="list.producer_name">
                   </div>
                 </div>
               </div>
@@ -37,8 +37,8 @@
                 <div class="field">
                   <label class="has-text-white has-text-left">Account Name</label>
                   <div class="control has-icons-left has-icons-right">
-                    <input :class="!correctAccountName && this.list.accountName!=='' ? 'input is-danger' : 'input'"
-                           v-model="list.accountName">
+                    <input :class="!correctAccountName && this.list.organization_name!=='' ? 'input is-danger' : 'input'"
+                           v-model="list.organization_name">
                   </div>
                 </div>
               </div>
@@ -56,8 +56,8 @@
                 <div class="field">
                   <label class="has-text-white">URI/IP</label>
                   <div class="control has-icons-left has-icons-right">
-                    <input :class="!correcturlip && list.urlip!=='' ? 'input is-danger' : 'input'"
-                           v-model="list.urlip">
+                    <input :class="!correcturlip && list.domain!=='' ? 'input is-danger' : 'input'"
+                           v-model="list.domain">
                   </div>
                 </div>
               </div>
@@ -68,7 +68,7 @@
                 <div class="field">
                   <label class="has-text-white">HTTP</label>
                   <div class="control has-icons-left has-icons-right">
-                    <input class="input" type="text" v-model="list.httport">
+                    <input class="input" type="text" v-model="list.http_port">
                   </div>
                 </div>
               </div>
@@ -76,7 +76,7 @@
                 <div class="field">
                   <label class="has-text-white">P2P</label>
                   <div class="control has-icons-left has-icons-right">
-                    <input class="input" type="text" v-model="list.p2port">
+                    <input class="input" type="text" v-model="list.p2p_port">
                   </div>
                 </div>
               </div>
@@ -86,10 +86,18 @@
             <div class="field">
               <label class="has-text-white">Public Key</label>
               <div class="control has-icons-left has-icons-right">
-                <input :class="!correctPublicKey && list.publicKey!=='' ? 'input is-danger' : 'input is-success'"
-              v-model="list.publicKey">
+                <input :class="!correctPublicKey && list.public_key!=='' ? 'input is-danger' : 'input is-success'"
+              v-model="list.public_key">
               </div>
-              <p v-if="!correctPublicKey && list.publicKey!==''" class="help is-danger">Invalid Public Key</p>
+              <p v-if="!correctPublicKey && list.public_key!==''" class="help is-danger">Invalid Public Key</p>
+            </div>
+            <div class="field">
+              <label class="has-text-white">Public Key</label>
+              <div class="control has-icons-left has-icons-right">
+                <input :class="!correctPublicKey && list.website!=='' ? 'input is-danger' : 'input is-success'"
+              v-model="list.website">
+              </div>
+              <p v-if="!correctPublicKey && list.public_key!==''" class="help is-danger">Invalid Public Key</p>
             </div>
             <div class="field">
               <div class="control">
@@ -139,13 +147,14 @@
     data () {
       return {
         list:{
-          nickname:'',
-          accountName:'',
-          publicKey: '',
-          urlip:'',
-          location: '',
-          httport:'',
-          p2port:''
+          producer_name:'eoshenzhen',
+          organization_name:'eoshenzhen22',
+          domain:'127.12.32.32',
+          location: 'Shenzhen',
+          http_port:'8888',
+          p2p_port:'21',
+          website: 'eoshenzhen.io',
+          public_key: 'EOS8MiE8qqwQ226ZQmR4jbJwwBFTJs88N7do8WeLas2HR68xXYDFx'
         },
         validPubk: false,
         validAccountName: false,
@@ -175,7 +184,7 @@
             console.log(content)
             // this.zipcontent = content
 
-            // let zipName = String(this.list.nickname)
+            // let zipName = String(this.list.producer_name)
             // FileSaver.saveAs(content, zipName);
             // see FileSaver.js
             FileSaver.saveAs(content, "example.zip");
@@ -183,16 +192,18 @@
       },
       saveToDB () {
         // this.$data all the data{}
-        axios.post('/eosvoting', this.$data).then((response) => console.log(response))
-          .catch((error) => console.log(error))
+        // axios.post('/eosvoting/store', this.$data).then((response) => console.log(response.config.data))
+        //   .catch((error) => console.log(error))
+        axios.post('/eosvoting', this.$data.list).then((response) => console.log(response))
+            .catch((error) => console.log(error))
       }
     },
     computed: {
       correcturlip () {
         this.validurlip = false
         let re = new RegExp(/^((?:(?:(?:\w[\.\-\+]?)*)\w)+)((?:(?:(?:\w[\.\-\+]?){0,62})\w)+)\.(\w{2,6})$/) // match ip address
-        this.validurlip = this.list.urlip.match(re)
-        // let res = this.list.urlip.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g)
+        this.validurlip = this.list.domain.match(re)
+        // let res = this.list.domain.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g)
         // if (res === null) {
         //   this.validurlip = false
         // } else {
@@ -201,7 +212,7 @@
         return this.validurlip
       },
       correctAccountName () {
-        if (this.list.accountName.length !== 12) {
+        if (this.list.organization_name.length !== 12) {
           this.validAccountName = false
         } else {
           this.validAccountName = true
@@ -209,8 +220,8 @@
         return this.validAccountName
       },
       correctPublicKey () {
-        this.$store.dispatch('isValidPublicKey', this.list.publicKey).then((ok) => {
-          console.log('awesome')
+        this.$store.dispatch('isValidPublicKey', this.list.public_key).then((ok) => {
+          console.log('awesome pubkey')
           this.validPubk = true
         }, (err) => {
           this.validPubk = false

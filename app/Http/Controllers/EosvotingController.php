@@ -35,7 +35,18 @@ class EosvotingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return $request->all();
+        $eosv = new eosvoting;
+        $eosv->producer_name = $request->producer_name;
+        $eosv->organization_name = $request->organization_name;
+        $eosv->location = $request->location;
+        $eosv->domain = $request->domain;
+        $eosv->http_port = $request->http_port;
+        $eosv->p2p_port = $request->p2p_port;
+        $eosv->public_key = $request->public_key;
+        $eosv->website = $request->website;
+        $eosv->save();
+        return $eosv;
     }
 
     /**
