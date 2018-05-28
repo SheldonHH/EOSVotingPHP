@@ -77,15 +77,25 @@
     </v-layout>
     <v-flex tag="h1" xs12 mb-0 class="headline">Block Producers</v-flex>
     <!--<v-flex x12 class="blue-grey&#45;&#45;text">-->
-      <v-data-table
+      <!-- <v-data-table
               :items="desserts"
               hide-actions
               hide-headers
       >
         <template slot="items" slot-scope="props">
           <td>{{ props.item.name }}</td>
-          <td class="text-xs-right">{{ props.item.calories }}</td>
-          <!--<td class="text-xs-right">{{ props.item.fat }}</td>-->
+          <td class="text-xs-right">{{ props.item.calories }}</td> -->
+          <v-data-table
+                  :items="lists"
+                  hide-actions
+                  hide-headers
+          >
+            <template slot="items" slot-scope="props">
+              <!-- <td>{{ props.itemli.name}}</td> -->
+              <!-- <td class="text-xs-right">{{ props.items.website }}</td> -->
+    <td>{{ props.item.producer_name }}</td>
+          <td class="text-xs-right">{{ props.item.organization_name }}</td>
+
           <!--<td class="text-xs-right">{{ props.item.carbs }}</td>-->
           <!--<td class="text-xs-right">{{ props.item.protein }}</td>-->
           <!--<td class="text-xs-right">{{ props.item.iron }}</td>-->
@@ -344,8 +354,14 @@
           protein: 7,
           iron: '6%'
         }],
-        sysamt: '0'
+        sysamt: '0',
+        lists: [],
+        temp: []
       }
+    },
+    mounted(){
+      console.log('mounted Working')
+        axios.post('/getBPData', this.$data.list).then((response) => this.temp = this.lists = response.data)
     },
     computed: {
       save () {

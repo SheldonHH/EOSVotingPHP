@@ -51,6 +51,10 @@ class EosvotingController extends Controller
         return $eosv;
     }
 
+    public function getBPData(){
+        return eosvoting::orderBy('producer_name', 'DESC')->get();
+    }
+
     /**
      * Display the specified resource.
      *

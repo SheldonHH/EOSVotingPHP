@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +27,5 @@ Route::get('/eosvoting/{name}', function(){
 Route::resource('phonebook', 'PhonebookController');
 Route::post('getData', 'PhonebookController@getData');
 
-Route::resource('eosvoting', 'EOSVotingController');
+Route::resource('eosvoting', 'EosvotingController');
+Route::post('getBPData', 'EosvotingController@getBPData');
