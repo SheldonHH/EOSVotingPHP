@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\eosvoting;
 use Illuminate\Http\Request;
+use App\Http\Requests\eosvotingRequest;
 
 class EosvotingController extends Controller
 {
@@ -33,7 +34,8 @@ class EosvotingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    // public function store(Request $request)
+    public function store(eosvotingRequest $request)
     {
         // return $request->all();
         $eosv = new eosvoting;
