@@ -10,11 +10,14 @@
 </head>
 <body>
     <div id="app">
-      <v-app id="inspire">
+      <!-- <v-app id="inspire"> -->
         <v-app dark class="black">
-          <Myheader>
-          </Myheader>
-          <router-view></router-view>
+          <Myheader></Myheader>
+          <v-content>
+              <v-container grid-list-md text-xs-center>
+                  <router-view></router-view>
+                </v-container>
+          </v-content>
           {{--<Add></Add>--}}
 
         <!-- <div class="container"> -->
