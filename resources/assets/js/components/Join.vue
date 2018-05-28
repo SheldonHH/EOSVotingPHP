@@ -27,24 +27,18 @@
             <div class="columns">
               <div class="column is-half">
                 <div class="field">
-                  <label class="has-text-white has-text-left" style="padding-right: 250px">Nick Name</label>
+                  <label class="has-text-white has-text-left">Nick Name</label>
                   <div class="control">
-                    <input class="input" v-model="nickname">
+                    <input class="input" v-model="list.nickname">
                   </div>
                 </div>
               </div>
               <div class="column is-half">
                 <div class="field">
-                  <label class="has-text-white has-text-left" style="padding-right: 250px">Account Name</label>
+                  <label class="has-text-white has-text-left">Account Name</label>
                   <div class="control has-icons-left has-icons-right">
-                    <input :class="!correctAccountName && this.accountName!=='' ? 'input is-danger' : 'input is-success'"
-                           v-model="accountName">
-                    <span class="icon is-small is-left">
-      <i class="fas fa-user"></i>
-    </span>
-                    <span class="icon is-small is-right">
-      <i class="fas fa-check"></i>
-    </span>
+                    <input :class="!correctAccountName && this.list.accountName!=='' ? 'input is-danger' : 'input'"
+                           v-model="list.accountName">
                   </div>
                 </div>
               </div>
@@ -52,30 +46,18 @@
             <div class="columns">
               <div class="column is-half">
                 <div class="field">
-                  <label class="has-text-white" style="padding-right: 470px">Location</label>
+                  <label class="has-text-white">Location</label>
                   <div class="control has-icons-left has-icons-right">
-                    <input class="input is-danger" type="email">
-                    <span class="icon is-small is-left">
-      <i class="fas fa-envelope"></i>
-    </span>
-                    <span class="icon is-small is-right">
-      <i class="fas fa-exclamation-triangle"></i>
-    </span>
+                    <input class="input" v-model="list.location">
                   </div>
                 </div>
               </div>
               <div class="column is-half">
                 <div class="field">
-                  <label class="has-text-white" style="padding-right: 500px">URI/IP</label>
+                  <label class="has-text-white">URI/IP</label>
                   <div class="control has-icons-left has-icons-right">
-                    <input :class="!correcturlip && urlip!=='' ? 'input is-danger' : 'input is-success'"
-                           v-model="urlip">
-                    <span class="icon is-small is-left">
-      <i class="fas fa-envelope"></i>
-    </span>
-                    <span class="icon is-small is-right">
-      <i class="fas fa-exclamation-triangle"></i>
-    </span>
+                    <input :class="!correcturlip && list.urlip!=='' ? 'input is-danger' : 'input'"
+                           v-model="list.urlip">
                   </div>
                 </div>
               </div>
@@ -84,29 +66,17 @@
             <div class="columns">
               <div class="column is-half">
                 <div class="field">
-                  <label class="has-text-white" style="padding-right: 470px">HTTP</label>
+                  <label class="has-text-white">HTTP</label>
                   <div class="control has-icons-left has-icons-right">
-                    <input class="input is-danger" type="email">
-                    <span class="icon is-small is-left">
-      <i class="fas fa-envelope"></i>
-    </span>
-                    <span class="icon is-small is-right">
-      <i class="fas fa-exclamation-triangle"></i>
-    </span>
+                    <input class="input" type="text" v-model="list.httport">
                   </div>
                 </div>
               </div>
               <div class="column is-half">
                 <div class="field">
-                  <label class="has-text-white" style="padding-right: 500px">P2P</label>
+                  <label class="has-text-white">P2P</label>
                   <div class="control has-icons-left has-icons-right">
-                    <input class="input is-danger" type="email">
-                    <span class="icon is-small is-left">
-      <i class="fas fa-envelope"></i>
-    </span>
-                    <span class="icon is-small is-right">
-      <i class="fas fa-exclamation-triangle"></i>
-    </span>
+                    <input class="input" type="text" v-model="list.p2port">
                   </div>
                 </div>
               </div>
@@ -114,20 +84,13 @@
 
 
             <div class="field">
-              <label class="has-text-white" style="padding-right: 450px">Public Key</label>
+              <label class="has-text-white">Public Key</label>
               <div class="control has-icons-left has-icons-right">
-                <input :class="!correctPublicKey && publicKey!=='' ? 'input is-danger' : 'input is-success'"
-              v-model="publicKey">
-                <span class="icon is-small is-left">
-      <i class="fas fa-envelope"></i>
-    </span>
-                <span class="icon is-small is-right">
-      <i class="fas fa-exclamation-triangle"></i>
-    </span>
+                <input :class="!correctPublicKey && list.publicKey!=='' ? 'input is-danger' : 'input is-success'"
+              v-model="list.publicKey">
               </div>
-              <p v-if="!correctPublicKey && publicKey!==''" class="help is-danger">Invalid Public Key</p>
+              <p v-if="!correctPublicKey && list.publicKey!==''" class="help is-danger">Invalid Public Key</p>
             </div>
-
             <div class="field">
               <div class="control">
                 <label class="checkbox">
@@ -175,12 +138,17 @@
   export default {
     data () {
       return {
-        nickname: '',
-        accountName: '',
-        publicKey: '',
+        list:{
+          nickname:'',
+          accountName:'',
+          publicKey: '',
+          urlip:'',
+          location: '',
+          httport:'',
+          p2port:''
+        },
         validPubk: false,
         validAccountName: false,
-        urlip: '',
         validurlip: false,
         configini: {},
         fileName: 'pp',
@@ -207,7 +175,7 @@
             console.log(content)
             // this.zipcontent = content
 
-            // let zipName = String(this.nickname)
+            // let zipName = String(this.list.nickname)
             // FileSaver.saveAs(content, zipName);
             // see FileSaver.js
             FileSaver.saveAs(content, "example.zip");
@@ -223,8 +191,8 @@
       correcturlip () {
         this.validurlip = false
         let re = new RegExp(/^((?:(?:(?:\w[\.\-\+]?)*)\w)+)((?:(?:(?:\w[\.\-\+]?){0,62})\w)+)\.(\w{2,6})$/) // match ip address
-        this.validurlip = this.urlip.match(re)
-        // let res = this.urlip.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g)
+        this.validurlip = this.list.urlip.match(re)
+        // let res = this.list.urlip.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g)
         // if (res === null) {
         //   this.validurlip = false
         // } else {
@@ -233,7 +201,7 @@
         return this.validurlip
       },
       correctAccountName () {
-        if (this.accountName.length !== 12) {
+        if (this.list.accountName.length !== 12) {
           this.validAccountName = false
         } else {
           this.validAccountName = true
@@ -241,7 +209,7 @@
         return this.validAccountName
       },
       correctPublicKey () {
-        this.$store.dispatch('isValidPublicKey', this.publicKey).then((ok) => {
+        this.$store.dispatch('isValidPublicKey', this.list.publicKey).then((ok) => {
           console.log('awesome')
           this.validPubk = true
         }, (err) => {
