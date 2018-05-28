@@ -14,7 +14,7 @@ class EosvotingController extends Controller
      */
     public function index()
     {
-      return view('phonebook');
+      return view('eosvoting');
     }
 
     /**

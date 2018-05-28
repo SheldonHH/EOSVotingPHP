@@ -16,12 +16,12 @@
           </Myheader>
           <router-view></router-view>
           {{--<Add></Add>--}}
-fasdf
+
         <!-- <div class="container"> -->
 
         <!-- </div> -->
-        <Myfooter>
-        </Myfooter>
+        <!-- <Myfooter>
+        </Myfooter> -->
         <!-- <Maipn>
         </Maipn> -->
       </v-app>
