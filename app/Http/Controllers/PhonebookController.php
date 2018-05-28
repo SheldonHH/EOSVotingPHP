@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace eosvoting\Http\Controllers;
 
-use App\Http\Requests\PhonebookRequest;
-use App\Phonebook;
+use eosvoting\Http\Requests\PhonebookRequest;
+use eosvoting\Phonebook;
 use Illuminate\Http\Request;
 
 class PhonebookController extends Controller
@@ -51,7 +51,7 @@ class PhonebookController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Phonebook  $phonebook
+     * @param  \eosvoting\Phonebook  $phonebook
      * @return \Illuminate\Http\Response
      */
     public function show(Phonebook $phonebook)
@@ -62,7 +62,7 @@ class PhonebookController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Phonebook  $phonebook
+     * @param  \eosvoting\Phonebook  $phonebook
      * @return \Illuminate\Http\Response
      */
     public function edit(Phonebook $phonebook)
@@ -74,7 +74,7 @@ class PhonebookController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Phonebook  $phonebook
+     * @param  \eosvoting\Phonebook  $phonebook
      * @return \Illuminate\Http\Response
      */
     public function update(PhonebookRequest $request, Phonebook $phonebook)
@@ -90,7 +90,7 @@ class PhonebookController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Phonebook  $phonebook
+     * @param  \eosvoting\Phonebook  $phonebook
      * @return \Illuminate\Http\Response
      */
     public function destroy(Phonebook $phonebook)

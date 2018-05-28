@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace eosvoting\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

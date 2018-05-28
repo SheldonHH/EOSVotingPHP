@@ -23,8 +23,8 @@
         <!-- <div class="container"> -->
 
         <!-- </div> -->
-        <!-- <Myfooter>
-        </Myfooter> -->
+        <Myfooter>
+        </Myfooter>
         <!-- <Maipn>
         </Maipn> -->
       </v-app>

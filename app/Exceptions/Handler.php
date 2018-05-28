@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exceptions;
+namespace eosvoting\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;

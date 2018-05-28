@@ -1,5 +1,5 @@
 <template>
-    <footer class="footer">
+     <v-footer class="pa-3">
         <div class="container">
             <div class="content has-text-centered">
                 <p>
@@ -9,5 +9,5 @@
                 </p>
             </div>
         </div>
-    </footer>
+    </v-footer>
 </template>

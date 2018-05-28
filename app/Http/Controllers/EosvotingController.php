@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace eosvoting\Http\Controllers;
 
-use App\eosvoting;
+use eosvoting\eosvoting;
 use Illuminate\Http\Request;
-use App\Http\Requests\eosvotingRequest;
+use eosvoting\Http\Requests\eosvotingRequest;
 
 class EosvotingController extends Controller
 {
@@ -58,7 +58,7 @@ class EosvotingController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\eosvoting  $eosvoting
+     * @param  \eosvoting\eosvoting  $eosvoting
      * @return \Illuminate\Http\Response
      */
     public function show(eosvoting $eosvoting)
@@ -69,7 +69,7 @@ class EosvotingController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\eosvoting  $eosvoting
+     * @param  \eosvoting\eosvoting  $eosvoting
      * @return \Illuminate\Http\Response
      */
     public function edit(eosvoting $eosvoting)
@@ -81,7 +81,7 @@ class EosvotingController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\eosvoting  $eosvoting
+     * @param  \eosvoting\eosvoting  $eosvoting
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, eosvoting $eosvoting)
@@ -92,7 +92,7 @@ class EosvotingController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\eosvoting  $eosvoting
+     * @param  \eosvoting\eosvoting  $eosvoting
      * @return \Illuminate\Http\Response
      */
     public function destroy(eosvoting $eosvoting)
