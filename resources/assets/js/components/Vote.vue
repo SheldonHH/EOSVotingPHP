@@ -44,7 +44,8 @@
             <v-flex xs12 class="subheading blue-grey--text">
               Current Block Number {{ baobao.head_block_num }} <br><br>
               Irreversible Block Number {{ baobao.last_irreversible_block_num }} <br><br>
-              Head Block Time {{ baobao.head_block_time }}
+              Head Block Time {{ baobao.head_block_time }} <br><br>
+              Server Version {{ baobao.server_version }} <br><br>
             </v-flex>
           </v-container>
         </v-card>
@@ -62,7 +63,7 @@
                     SYS
                   </v-flex>
                   <v-flex xs12 class="display-1">
-                    {{ sysamt }}
+                    {{ sysamt }} {{save}}
                     <v-btn class="btn generatebtn" absolute dark mx-0 my-0
                            @click="setstakes">Set stakes
                     </v-btn>
@@ -360,13 +361,22 @@
       }
     },
     mounted(){
+      // axios.get('http://baby.eoshenzhen.io:8888/v1/chain/get_info')
+      //   .then((response) => {
+      //     this.baobao = response.data
+      //     console.log(response.data)
+      //     return this.baobao
+      //   })
+      //   .catch(function (error) {
+      //     console.log(error)
+      //   })
       console.log('mounted Working')
         axios.post('/getBPData', this.$data.list).then((response) => this.temp = this.lists = response.data)
     },
     computed: {
       save () {
-        axios.get('http://baby.eoshenzhen.io:8888/v1/chain/get_info')
-          .then((response) => {
+        axios.get('http://baby.eoshenzhen.io:8888/v1/chain/get_info'
+      ).then((response) => {
             this.baobao = response.data
             console.log(response.data)
             return this.baobao

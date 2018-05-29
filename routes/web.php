@@ -29,3 +29,7 @@ Route::post('getData', 'PhonebookController@getData');
 
 Route::resource('eosvoting', 'EosvotingController');
 Route::post('getBPData', 'EosvotingController@getBPData');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
