@@ -29,6 +29,11 @@
   .border-bottom {
     border-bottom: 1px solid #313d4f;
   }
+  .tooltipContent{
+    position: fixed;
+    background-color: white;
+    padding: 40px;
+  }
 </style>
 <template>
   <!-- grid-list-xl  打开间距-->
@@ -41,12 +46,25 @@
           <v-flex d-flex xs12>
         <v-card color="blue-grey darken-4" dark>
           <v-container class="px-4 py-4">
-            <v-flex xs12 class="subheading blue-grey--text">
-              Current Block Number {{ baobao.head_block_num }} <br><br>
-              Irreversible Block Number {{ baobao.last_irreversible_block_num }} <br><br>
-              Head Block Time {{ baobao.head_block_time }} <br><br>
-              Server Version {{ baobao.server_version }} <br><br>
+            <v-flex xs12 class="title blue-grey--text">
+              <!-- <v-container class="px-4 py-4"> -->
+                <v-layout row wrap justify-space-between>
+              <v-flex xs6>
+                Current Block Number<br><br><br>
+                Irreversible Block Number<br><br><br>
+                Head Block Time<br><br><br>
+                Server Version
+              </v-flex>
+              <v-flex xs6>
+                <p class="title ml-5" style="color: white">{{ baobao.head_block_num }}</p> <br>
+                <p class="title ml-5" style="color: white">{{ baobao.last_irreversible_block_num }}</p> <br>
+                <p class="title ml-5" style="color: white"> {{ baobao.head_block_time }}</p> <br>
+                <p class="title ml-5" style="color: white"> {{ baobao.server_version }}</p>
             </v-flex>
+            </v-layout>
+          <!-- </v-container> -->
+
+          </v-flex>
           </v-container>
         </v-card>
           </v-flex>
@@ -63,7 +81,7 @@
                     SYS
                   </v-flex>
                   <v-flex xs12 class="display-1">
-                    {{ sysamt }} {{save}}
+                    {{ sysamt }}
                     <v-btn class="btn generatebtn" absolute dark mx-0 my-0
                            @click="setstakes">Set stakes
                     </v-btn>
@@ -77,6 +95,18 @@
       </v-flex>
     </v-layout>
     <v-flex tag="h1" xs12 mb-0 class="headline">Block Producers</v-flex>
+    <!-- <v-flex d-flex v-for="item in lists">
+      <v-flex xs6>
+        <v-tooltip>
+          <div slot="activator">{{ item.producer_name }}</div>
+          <span>Tooltip</span>
+        </v-tooltip>
+      </v-flex>
+      <v-flex xs6>
+              <p class="text-xs-right">{{ item.organization_name }}</p>
+              <v-btn small>Vote</v-btn>
+      </v-flex>
+    </v-flex> -->
     <!--<v-flex x12 class="blue-grey&#45;&#45;text">-->
       <!-- <v-data-table
               :items="desserts"
@@ -92,9 +122,17 @@
                   hide-headers
           >
             <template slot="items" slot-scope="props">
+              <td>{{ props.item.producer_name }}
+                <span @mouseover="showToolTip($event, props.item.producer_name)">ICON</span>
+              </td>
+              <v-icon slot="activator" dark color="primary">home</v-icon>
+              <span>Tooltip</span>
               <!-- <td>{{ props.itemli.name}}</td> -->
               <!-- <td class="text-xs-right">{{ props.items.website }}</td> -->
-    <td>{{ props.item.producer_name }}</td>
+    <!-- <v-tooltip> -->
+
+
+    <!-- </v-tooltip> -->
           <td class="text-xs-right">{{ props.item.organization_name }}</td>
 
           <!--<td class="text-xs-right">{{ props.item.carbs }}</td>-->
@@ -104,6 +142,9 @@
         </template>
       </v-data-table>
     <!--</v-flex>-->
+    <div class="tooltipContent" :style="{ top: tooltipContent.y + 'px', left: tooltipContent.x + 'px' }">
+      test
+    </div>
   </v-container>
 </template>
 
@@ -357,7 +398,8 @@
         }],
         sysamt: '0',
         lists: [],
-        temp: []
+        temp: [],
+        tooltipContent: {x:0,y:0}
       }
     },
     mounted(){
@@ -372,21 +414,34 @@
       //   })
       console.log('mounted Working')
         axios.post('/getBPData', this.$data.list).then((response) => this.temp = this.lists = response.data)
+        this.timer = setInterval(()=>{
+            this.save()
+        }, 1000)
+        // 内存溢出，websocket出现，解决了轮训的性能问题，大量的轮训，三十，一个轮训，轮训管理释放内存，浏览器半小时崩溃，能否改
+        // server端需要对接口进行特殊处理，前端：直接做websocket的API
+        // 监控数据库，和接口发生改变的时候，法连
     },
-    computed: {
+    destroy(){
+        window.clearInterval(this.timer)
+    },
+    methods: {
+      showToolTip ($event, producer_name){
+          console.log('$event', $event)
+          let { top, left } = $event.target.getBoundingClientRect()
+          this.tooltipContent.x = left
+          this.tooltipContent.y = top
+      },
       save () {
         axios.get('http://baby.eoshenzhen.io:8888/v1/chain/get_info'
       ).then((response) => {
             this.baobao = response.data
-            console.log(response.data)
+            // console.log(response.data)
             return this.baobao
-          })
+          }, 1000)
           .catch(function (error) {
             console.log(error)
           })
-      }
-    },
-    methods: {
+      },
       setstakes () {
 
       },
